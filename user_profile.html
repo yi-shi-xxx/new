@@ -1,0 +1,77 @@
+<!-- user_profile.html -->
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<title>用户个人中心</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+    font-family: 'HarmonyOS', '微软雅黑', Arial, sans-serif;
+    background: linear-gradient(120deg, rgba(27,38,52,0.82) 35%, rgba(42,180,217,0.24) 100%);
+    color: #b4e2ff;
+    padding: 20px;
+}
+.card {
+    background: rgba(32,45,64,0.50);
+    border-radius: 22px;
+    padding: 28px;
+    box-shadow: 0 6px 38px #26283c77;
+    backdrop-filter: blur(7px) brightness(1.13);
+    -webkit-backdrop-filter: blur(7px) brightness(1.13);
+    margin-bottom: 20px;
+}
+.card h2 {
+    color: #3dd3ee;
+    margin-bottom: 10px;
+}
+.card p {
+    line-height: 1.6;
+}
+</style>
+</head>
+<body>
+    <h1>用户个人中心</h1>
+    <div class="card">
+        <h2>基本信息</h2>
+        <p>用户名：[用户名]</p>
+        <p>注册时间：[注册时间]</p>
+    </div>
+    <div class="card">
+        <h2>历史预测记录</h2>
+        <table>
+            <thead>
+                <tr><th>时间</th><th>OER</th><th>ORR</th><th>建议</th></tr>
+            </thead>
+            <tbody>
+                <!-- 动态填充历史记录 -->
+            </tbody>
+        </table>
+    </div>
+    <div class="card">
+        <h2>个人偏好设置</h2>
+        <p>设置内容1：[设置值1]</p>
+        <p>设置内容2：[设置值2]</p>
+    </div>
+    <button onclick="window.location.href='predict.html'">返回预测页面</button>
+
+<!-- 顶部导航栏新增用户入口 -->
+<div class="header-nav">
+    <button onclick="window.location.href='login.html'">登录</button>
+    <button onclick="window.location.href='register.html'">注册</button>
+    <button onclick="window.location.href='user_profile.html'">个人中心</button>
+</div>
+
+<!-- user_profile.html 新增收藏板块 -->
+<div class="card">
+    <h2>我的收藏方案</h2>
+    <table id="favorites-table">
+        <thead><tr><th>收藏时间</th><th>OER</th><th>ORR</th><th>操作</th></tr></thead>
+        <tbody>
+            <!-- 动态加载收藏记录 -->
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>

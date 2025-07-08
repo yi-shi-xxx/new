@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<title>模型介绍</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+    font-family: 'HarmonyOS', '微软雅黑', Arial, sans-serif;
+    background: linear-gradient(120deg, rgba(27,38,52,0.82) 35%, rgba(42,180,217,0.24) 100%);
+    color: #b4e2ff;
+    padding: 20px;
+}
+.card {
+    background: rgba(32,45,64,0.50);
+    border-radius: 22px;
+    padding: 28px;
+    box-shadow: 0 6px 38px #26283c77;
+    backdrop-filter: blur(7px) brightness(1.13);
+    -webkit-backdrop-filter: blur(7px) brightness(1.13);
+    margin-bottom: 20px;
+}
+.card h2 {
+    color: #3dd3ee;
+    margin-bottom: 10px;
+}
+.card p {
+    line-height: 1.6;
+}
+</style>
+</head>
+<body>
+    <h1>模型介绍</h1>
+    <div class="card">
+        <h2>OER模型</h2>
+        <p>OER（氧析出反应）模型是基于大量的实验数据和理论计算结果训练得到的。该模型使用了多种机器学习算法，能够准确预测石墨烯材料在氧析出反应中的过电势。模型的训练数据包括体系的能量、M的形成能等多个特征，通过对这些特征的分析和学习，模型能够快速准确地给出预测结果。</p>
+    </div>
+    <div class="card">
+        <h2>ORR模型</h2>
+        <p>ORR（氧还原反应）模型同样是经过精心训练的，用于预测石墨烯材料在氧还原反应中的性能。模型考虑了材料的多种物理化学性质，如单原子的d带中心、团簇的d带中心等，通过对这些特征的综合分析，能够为用户提供可靠的预测结果和优化建议。</p>
+    </div>
+    <button onclick="window.location.href='predict.html'">返回预测页面</button>
+</body>
+</html>

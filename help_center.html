@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<title>帮助中心</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+    font-family: 'HarmonyOS', '微软雅黑', Arial, sans-serif;
+    background: linear-gradient(120deg, rgba(27,38,52,0.82) 35%, rgba(42,180,217,0.24) 100%);
+    color: #b4e2ff;
+    padding: 20px;
+}
+.card {
+    background: rgba(32,45,64,0.50);
+    border-radius: 22px;
+    padding: 28px;
+    box-shadow: 0 6px 38px #26283c77;
+    backdrop-filter: blur(7px) brightness(1.13);
+    -webkit-backdrop-filter: blur(7px) brightness(1.13);
+    margin-bottom: 20px;
+}
+.card h2 {
+    color: #3dd3ee;
+    margin-bottom: 10px;
+}
+.card p {
+    line-height: 1.6;
+}
+</style>
+</head>
+<body>
+    <h1>帮助中心</h1>
+    <div class="card">
+        <h2>常见问题解答</h2>
+        <p><b>Q：如何输入数据？</b><br>A：您可以通过批量粘贴或手动输入的方式输入数据。批量粘贴支持空格、逗号、Tab分隔。</p>
+        <p><b>Q：预测结果不准确怎么办？</b><br>A：请检查输入的数据是否准确，或者联系客服获取帮助。</p>
+        <p><b>Q：是否支持多种模型？</b><br>A：目前平台支持OER和ORR模型，后续会添加更多的模型。</p>
+    </div>
+    <div class="card">
+        <h2>使用教程</h2>
+        <p>1. 打开平台首页，输入关键指标数据。</p>
+        <p>2. 点击“提交并预测”按钮，等待预测结果。</p>
+        <p>3. 查看预测结果和优化建议，如有需要可以保存或下载结果。</p>
+    </div>
+    <div class="card">
+        <h2>联系客服</h2>
+        <p>如果您在使用过程中遇到任何问题，请点击“客服中心”按钮，我们将竭诚为您服务。</p>
+    </div>
+    <button onclick="window.location.href='predict.html'">返回预测页面</button>
+</body>
+</html>

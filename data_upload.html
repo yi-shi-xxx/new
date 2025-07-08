@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<title>数据上传</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+    font-family: 'HarmonyOS', '微软雅黑', Arial, sans-serif;
+    background: linear-gradient(120deg, rgba(27,38,52,0.82) 35%, rgba(42,180,217,0.24) 100%);
+    color: #b4e2ff;
+    padding: 20px;
+}
+.card {
+    background: rgba(32,45,64,0.50);
+    border-radius: 22px;
+    padding: 28px;
+    box-shadow: 0 6px 38px #26283c77;
+    backdrop-filter: blur(7px) brightness(1.13);
+    -webkit-backdrop-filter: blur(7px) brightness(1.13);
+}
+.card h2 {
+    color: #3dd3ee;
+    margin-bottom: 20px;
+}
+input[type="file"] {
+    margin-bottom: 20px;
+}
+button {
+    padding: 10px 20px;
+    background: #1976d2;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+button:hover {
+    background: #0288d1;
+}
+</style>
+</head>
+<body>
+    <h1>数据上传</h1>
+    <div class="card">
+        <h2>上传批量数据</h2>
+        <input type="file" id="dataFile">
+        <button onclick="uploadData()">上传并预测</button>
+        <div id="uploadResult"></div>
+    </div>
+    <button onclick="window.location.href='predict.html'">返回预测页面</button>
+    <script>
+        function uploadData() {
+            const file = document.getElementById('dataFile').files[0];
+            if (!file) {
+                document.getElementById('uploadResult').innerHTML = '<span style="color:red">请选择文件</span>';
+                return;
+            }
+            const reader = new FileReader();
+            reader.onload = async function(e) {
+                const data = e.target.result;
+                try {
+                    const resp = await fetch('https://pttext.up.railway.app/predict_batch', {
+                        method: 'POST',
+                        headers: {'Content-Type': 'text/csv'},
+                        body: data
+                    });
+                    const res = await resp.json();
+                    if (res.error) {
+                        document.getElementById('uploadResult').innerHTML = `<span style="color:red">${res.error}</span>`;
+                    } else {
+                        document.getElementById('uploadResult').innerHTML = `<span style="color:green">预测成功，结果已保存。</span>`;
+                    }
+                } catch (err) {
+                    document.getElementById('uploadResult').innerHTML = `<span style="color:red">请求失败：${err}</span>`;
+                }
+            };
+            reader.readAsText(file);
+        }
+    </script>
+</body>
+</html>

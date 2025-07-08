@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>反馈与建议</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+        .feedback-btn {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            padding: 10px 20px;
+            background-color: #1976d2;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            width: 80%;
+            max-width: 600px;
+        }
+        .modal-content h2 {
+            margin-top: 0;
+        }
+        .modal-content form {
+            display: flex;
+            flex-direction: column;
+        }
+        .modal-content label {
+            margin-bottom: 5px;
+        }
+        .modal-content input,
+        .modal-content textarea {
+            margin-bottom: 15px;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .modal-content button {
+            padding: 10px 20px;
+            background-color: #1976d2;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .modal-content button:hover {
+            background-color: #1565b0;
+        }
+    </style>
+</head>
+<body>
+
+        <div class="modal-content">
+            <h2>提交反馈与建议</h2>
+            <form id="feedbackForm">
+                <label for="name">姓名:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">邮箱:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="content">反馈与建议内容:</label>
+                <textarea id="content" name="content" rows="4" required></textarea>
+
+                <button type="submit">提交</button>
+                <button type="button" onclick="closeModal()">取消</button>
+                <button onclick="window.location.href='predict.html'">返回首页</button>
+            </form>
+        </div>
+
+
+    <script>
+        function openModal() {
+            document.getElementById('feedbackModal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('feedbackModal').style.display = 'none';
+        }
+
+        document.getElementById('feedbackForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+            fetch('/submit_feedback', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert(data.message);
+                closeModal();
+                this.reset();
+            });
+        });
+    </script>
+</body>
+</html>
